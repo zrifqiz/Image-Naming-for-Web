@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Image Naming</title>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+</head>
+<body>
+	<div class="container text-center">
+		<h1 class="display-2 my-5">Image naming for web</h1>
+		<div class="input-group input-group-lg mb-5">
+		  <input id="imageNameSpaces" type="text" class="form-control" placeholder="Image name with spaces" aria-describedby="sizing-addon1">
+		</div>
+		<div class="mb-3">
+			<p id="imageNameDashes"></p>
+		</div>
+		<button type="button" class="btn btn-secondary btn-lg mb-3" id="copyImageName">Copy image name</button>
+		<p id="copyStatus"></p>
+	</div>
+
+<script type="text/javascript" >
+	var imageNameSpaces = document.getElementById('imageNameSpaces');
+	var imageNameDashes = document.getElementById('imageNameDashes');
+	var copyImageName = document.getElementById('copyImageName');
+	var copyStatus = document.getElementById('copyStatus');
+
+	imageNameSpaces.oninput = function(e) {
+		var val = e.target.value;
+		var parsedValue = val.replace(/\s/g, "-");
+		imageNameDashes.innerHTML = parsedValue;
+	}
+
+	copyImageName.onclick = function() {
+		var range = document.createRange();
+		range.selectNodeContents(imageNameDashes);
+
+		var selection = window.getSelection();
+		selection.addRange(range);
+
+		document.execCommand("copy");
+		copyStatus.innerHTML = "Copy successful"
+	}
+
+
+
+</script>
+</body>
+</html>
