@@ -37,7 +37,11 @@
 		selection.addRange(range);
 
 		document.execCommand("copy");
-		copyStatus.innerHTML = "Copy successful"
+		copyStatus.innerHTML = "Copy successful";
+
+		setTimeout(function () {
+			copyStatus.innerHTML = ""
+		}, 2000);
 	}
 
 
